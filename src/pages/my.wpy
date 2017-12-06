@@ -1,0 +1,63 @@
+<style lang="less" src="../styles/widget/my.less"></style>
+<template>
+  <view class="myPage">
+    <view class="header">
+      <image src="{{ userInfo.avatarUrl }}"/>
+      <view class="nickname">{{ userInfo.nickName }}</view>
+      <view class="rightArea">
+        <block wx:if="{{rightType == 'text'}}">
+          <view class="text">编辑资料</view>
+        </block>
+        <block wx:if="{{rightType == 'icon'}}">
+          <image class="icon" src="../images/icon_edit.png"></image>
+        </block>
+      </view>
+    </view>
+
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+//  import { connect } from 'wepy-redux'
+
+//  @connect({
+//    num(state) {
+//      return state.counter.num
+//    }
+//  }, {
+//    addNum: num => {}
+//  })
+
+  export default class My extends wepy.page {
+    config = {
+      navigationBarTitleText: '我的'
+    }
+    components = {
+
+    }
+
+    data = {
+      userInfo: {},
+      rightType: 'text'// text,icon
+    }
+
+    methods = {
+
+    }
+
+    events = {
+
+    }
+
+    onLoad() {
+      let self = this
+      this.$parent.getUserInfo(function (userInfo) {
+        if (userInfo) {
+          self.userInfo = userInfo
+          console.log(userInfo)
+          self.$apply()
+        }
+      })
+    }
+  }
+</script>

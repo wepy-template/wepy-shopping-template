@@ -1,0 +1,44 @@
+<style lang="less">
+
+</style>
+<template>
+  <view class="container">
+
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+//  import { connect } from 'wepy-redux'
+
+//  @connect({
+//    num(state) {
+//      return state.counter.num
+//    }
+//  }, {
+//    addNum: num => {}
+//  })
+
+  export default class Follow extends wepy.page {
+    config = {
+      navigationBarTitleText: '关注'
+    }
+    components = {
+
+    }
+
+    data = {
+    }
+
+    methods = {
+
+    }
+
+    events = {
+
+    }
+
+    onLoad() {
+
+    }
+  }
+</script>

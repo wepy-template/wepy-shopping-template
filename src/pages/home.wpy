@@ -1,0 +1,38 @@
+<style lang="less">
+
+</style>
+<template>
+  <view class="container">
+
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+  import { getStore, connect } from 'wepy-redux'
+
+  @connect({
+    accessToken(state) {
+      return state.accessToken
+    }
+  }, {
+
+  })
+
+  export default class Home extends wepy.page {
+    config = {
+      navigationBarTitleText: '首页'
+    }
+
+    components = {
+
+    }
+
+    data = {
+    }
+
+    onLoad() {
+      const state = getStore().getState()
+      console.log(state)
+    }
+  }
+</script>
