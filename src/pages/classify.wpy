@@ -2,7 +2,7 @@
 
 </style>
 <template>
-  <view class="container">
+  <view>
 
   </view>
 </template>
@@ -18,9 +18,9 @@
 //    addNum: num => {}
 //  })
 
-  export default class Follow extends wepy.page {
+  export default class extends wepy.page {
     config = {
-      navigationBarTitleText: '关注'
+      navigationBarTitleText: '分类'
     }
     components = {
 

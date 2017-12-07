@@ -1,0 +1,44 @@
+<style lang="less" src="../styles/widget/my.less"></style>
+<template>
+  <view class="myPage">
+
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+  //  import { connect } from 'wepy-redux'
+
+  //  @connect({
+  //    num(state) {
+  //      return state.counter.num
+  //    }
+  //  }, {
+  //    addNum: num => {}
+  //  })
+
+  export default class extends wepy.page {
+    config = {
+      navigationBarTitleText: '购物车'
+    }
+    components = {
+
+    }
+
+    data = {
+      userInfo: {},
+      rightType: 'text'// text,icon
+    }
+
+    methods = {
+
+    }
+
+    events = {
+
+    }
+
+    onLoad() {
+
+    }
+  }
+</script>

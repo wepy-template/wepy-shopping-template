@@ -1,0 +1,110 @@
+<style lang="less">
+  .recommendVerical{
+    display: flex;
+    flex-direction: column;
+  }
+  .recommendVerical .recommend-hd{
+    height: 45px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .recommendVerical .line{
+    height: 1px;
+    background-color: #E5E5E5;
+    flex: 1;
+  }
+  .recommendVerical .title{
+    color: #333;
+    font-size: 21px;
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+  .recommendVerical .recommend-bd{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+  }
+  .recommendVerical .recommend-bd-item{
+    width: 50%;
+  }
+  .recommendVerical .recommend-bd-item-image{
+    width: auto;
+    margin: 5px;
+    flex: 1;
+    background: #f2f2f2;
+  }
+  .recommendVerical .recommend-bd-item-cont{
+    display: flex;
+    flex-direction: column;
+  }
+  .recommendVerical .good-title{
+    color: #333;
+    font-size: 16px;
+    display: block;
+    max-width: 100%;
+    _width: 100%;
+    overflow: hidden;
+    height: 36px;
+    line-height: 18px;
+    word-wrap: break-word;
+    word-break: break-all;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .recommendVerical .good-disPirce{
+    color: #f10215;
+    font-size: 15px;
+    margin-left: 5px;
+    margin-top: 5px;
+  }
+  .recommendVerical .good-price{
+    color: #999;
+    font-size: 13px;
+    text-decoration: line-through;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+</style>
+<template>
+  <view class="recommendVerical">
+    <view class="recommend-hd">
+      <view class="line"></view>
+      <view class="title">{{title}}</view>
+      <view class="line"></view>
+    </view>
+    <view class="recommend-bd">
+      <repeat for="{{goods}}" index="index" item="item" key="key">
+        <view class="recommend-bd-item">
+          <view style="margin: 5px; border-radius: 3px; background: white; display: flex; flex-direction: column;">
+            <image class="recommend-bd-item-image" src=""/>
+            <view class="recommend-bd-item-cont">
+              <view class="good-title">商品说明文字商品说明文字</view>
+              <view class="good-disPirce">¥10.00</view>
+              <view class="good-price">¥12.00</view>
+            </view>
+          </view>
+        </view>
+      </repeat>
+    </view>
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+
+  export default class RecommendVerical extends wepy.component {
+    props = {
+      title: {
+        type: String,
+        default: ''
+      },
+      goods: {
+        type: Array,
+        default: [],
+        twoWay: true
+      }
+    }
+  }
+</script>

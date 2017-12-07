@@ -1,0 +1,106 @@
+<style lang="less">
+  .recommendHorizontal{
+    display: flex;
+    flex-direction: column;
+    background: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .recommendHorizontal .recommend-hd{
+    height: 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #f2f2f2;
+  }
+  .recommendHorizontal .title{
+    color: #333;
+    font-size: 21px;
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+  .recommendHorizontal .recommend-bd{
+    display: flex;
+    flex-direction: row;
+    white-space: nowrap;
+  }
+  .recommendHorizontal .recommend-bd-item{
+    width: 150px;
+    display:inline-block;
+  }
+  .recommendHorizontal .recommend-bd-item-image{
+    width: auto;
+    height: 150px;
+    flex: 1;
+    background: #f2f2f2;
+  }
+  .recommendHorizontal .recommend-bd-item-cont{
+    display: flex;
+    flex-direction: column;
+  }
+  .recommendHorizontal .good-title{
+    color: #333;
+    font-size: 16px;
+    display: block;
+    max-width: 100%;
+    _width: 100%;
+    overflow: hidden;
+    height: 36px;
+    line-height: 18px;
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: pre-wrap;
+    margin-top: 5px;
+  }
+  .recommendHorizontal .good-disPirce{
+    color: #f10215;
+    font-size: 15px;
+    margin-top: 5px;
+  }
+  .recommendHorizontal .good-price{
+    color: #999;
+    font-size: 13px;
+    text-decoration: line-through;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+</style>
+<template>
+  <view class="recommendHorizontal">
+    <view class="recommend-hd">
+      <view class="title">{{title}}</view>
+    </view>
+    <scroll-view class="recommend-bd" scroll-x="true" style="width: 100%;">
+      <repeat for="{{goods}}" index="index" item="item" key="key">
+        <view class="recommend-bd-item">
+          <view style="margin: 5px; border-radius: 3px; background: white; display: flex; flex-direction: column;">
+            <image class="recommend-bd-item-image" src=""/>
+            <view class="recommend-bd-item-cont">
+              <view class="good-title">商品说明文字商品说明文字商品说明</view>
+              <view class="good-disPirce">¥10.00</view>
+              <view class="good-price">¥12.00</view>
+            </view>
+          </view>
+        </view>
+      </repeat>
+    </scroll-view>
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+
+  export default class RecommendHorizontal extends wepy.component {
+    props = {
+      title: {
+        type: String,
+        default: ''
+      },
+      goods: {
+        type: Array,
+        default: [],
+        twoWay: true
+      }
+    }
+  }
+</script>

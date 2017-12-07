@@ -1,6 +1,8 @@
 <style lang="less">
-@import './styles/common.less';
-
+@import "./styles/weui.less";
+page{
+  background-color: #f2f2f2;
+}
 </style>
 
 <script>
@@ -16,22 +18,44 @@ setStore(store)
 export default class extends wepy.app {
   config = {
     pages: [
-      'pages/template',
       'pages/home',
+      'pages/classify',
+      'pages/shoppingCart',
       'pages/my'
     ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: 'white',
-      navigationBarTitleText: '模版',
+      navigationBarTitleText: '商城',
       navigationBarTextStyle: 'black'
+    },
+    tabBar: {
+      color: '#8a8a8a',
+      selectedColor: '#1F9948',
+      borderStyle: 'white',
+      backgroundColor: '#fff',
+      list: [{
+        pagePath: 'pages/home',
+        iconPath: 'images/icon-home.png',
+        selectedIconPath: 'images/icon-home-select.png',
+        text: '首页'
+      }, {
+        pagePath: 'pages/classify',
+        iconPath: 'images/icon-classify.png',
+        selectedIconPath: 'images/icon-classify-select.png',
+        text: '分类'
+      }, {
+        pagePath: 'pages/shoppingCart',
+        iconPath: 'images/icon-shopcart.png',
+        selectedIconPath: 'images/icon-shopcart-select.png',
+        text: '购物车'
+      }, {
+        pagePath: 'pages/my',
+        iconPath: 'images/icon-my.png',
+        selectedIconPath: 'images/icon-my-select.png',
+        text: '我的'
+      }]
     }
-//    tabBar: {
-//      list: [{
-//        pagePath: 'pages/template',
-//        text: '首页'
-//      }]
-//    }
   }
 
   globalData = {

@@ -1,14 +1,43 @@
-<style lang="less">
-
+<style lang="less" src="../styles/widget/home.less">
 </style>
 <template>
-  <view class="container">
-
+  <view class="HomePage">
+    <block wx:if="{{banners.length > 0}}">
+      <view class="banner">
+        <swiper class="swiper" indicator-dots="true" indicator-active-color="#1F9948" autoplay="true">
+          <repeat for="{{banners}}" index="index" item="banner" key="key">
+            <swiper-item>
+              <image class="swiper-image" src="" @tap="handleBanner({{index}})"/>
+            </swiper-item>
+          </repeat>
+        </swiper>
+      </view>
+    </block>
+    <block wx:if="{{classIndexs.length > 0}}">
+      <view class="classifies">
+        <swiper style="height: 100%;" indicator-dots="true" indicator-active-color="#1F9948">
+          <repeat for="{{classIndexs}}" item="classIndex" index="index" key="key">
+            <swiper-item class="classify-swiper-item">
+              <repeat for="{{classifies[classIndex]}}" item="classify" index="index" key="key">
+                <view class="classify-item" @tap="handleClassify({{classify.name}})">
+                  <image class="classify-item-icon" src=""/>
+                  <text class="classify-item-text">{{classify.name}}</text>
+                </view>
+              </repeat>
+            </swiper-item>
+          </repeat>
+        </swiper>
+      </view>
+    </block>
+    <recommendHorizontal :title.sync="recommendTitle" :goods="recommendData"/>
+    <recommendVertical :title.sync="recommendTitle" :goods="recommendData"/>
   </view>
 </template>
 <script>
   import wepy from 'wepy'
   import { getStore, connect } from 'wepy-redux'
+  import RecommendVertical from '../components/recommendVertical'
+  import RecommendHorizontal from '../components/recommendHorizontal'
 
   @connect({
     accessToken(state) {
@@ -18,16 +47,36 @@
 
   })
 
-  export default class Home extends wepy.page {
+  export default class extends wepy.page {
     config = {
       navigationBarTitleText: '首页'
     }
 
     components = {
-
+      recommendVertical: RecommendVertical,
+      recommendHorizontal: RecommendHorizontal
     }
 
     data = {
+      banners: [1, 2, 3],
+      classIndexs: [0, 1],
+      classifies: [
+        [{name: '分类1'}, {name: '分类2'}, {name: '分类3'}, {name: '分类4'}, {name: '分类5'},
+        {name: '分类6'}, {name: '分类7'}, {name: '分类8'}, {name: '分类9'}, {name: '分类10'}],
+        [{name: '分类11'}, {name: '分类12'}, {name: '分类13'}, {name: '分类14'}, {name: '分类15'},
+          {name: '分类16'}, {name: '分类17'}, {name: '分类18'}, {name: '分类19'}]
+      ],
+      recommendTitle: '新品上架',
+      recommendData: [1, 2, 3, 4]
+    }
+
+    methods = {
+      handleBanner(index) {
+        console.log(index)
+      },
+      handleClassify(name) {
+        console.log(name)
+      }
     }
 
     onLoad() {
